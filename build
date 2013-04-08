@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+shower/bin/markdown2shower < index.md > index.html
