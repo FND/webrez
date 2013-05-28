@@ -32,4 +32,4 @@ dolor sit amet
 * foo
 * bar
 
-Any `hr.pragma` modifies the following element, applying all its attributes.
+Any `HR.pragma` modifies the following element, applying all its attributes.
