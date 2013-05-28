@@ -1,4 +1,3 @@
 [submodule "shower"]
 	path = shower
-	url = git://github.com/FND/shower.git
-	branch = simple_markup
+	url = git://github.com/shower/shower.git

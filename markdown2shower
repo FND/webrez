@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+
+# generates Shower presentation from Markdown input on STDIN
+#
+# the first two lines determine title and tagline, respectively
+# an optional argument determines the HTML template to be used
+
+read title
+read tagline
+template=${1:-"template.html"}
+
+tmpfile="tmp$$tmp"
+
+if [ ! -f "$template" ]; then
+	echo "ERROR: template file (\`$template\`) could not be found"
+	exit 1
+fi
+
+# post-process regular Markdown output to account for common mismatches
+~/Scripts/Markdown.pl | \
+		sed -e "s#\(<pre>\)<code>#\1#g" -e "s#</code>\(</pre>\)#\1#g" \
+		> $tmpfile
+
+# templating; replacing placeholders
+sed $template \
+		-e "s/<!-- TITLE -->/$title/g" \
+		-e "s/<!-- TAGLINE -->/$tagline/g" | \
+	awk -v RS='<!-- CONTENTS -->' "NR > 0 { print \$0 > \"${tmpfile}_\" NR }"
+cat ${tmpfile}_1 $tmpfile ${tmpfile}_2
+rm $tmpfile ${tmpfile}_{1,2}
