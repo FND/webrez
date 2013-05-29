@@ -6,7 +6,9 @@ based on [Shower](http://shwr.me)
 Getting Started
 ---------------
 
-* `git submodule init && git submodule update`
+* ensure that [`Markdown.pl`](http://daringfireball.net/projects/markdown/) is
+  available on your `PATH`
+* `git submodule update --init`
 * edit `index.md`
 * run `./build`
 
