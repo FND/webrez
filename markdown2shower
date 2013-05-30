@@ -22,9 +22,16 @@ Markdown.pl | \
 		> $tmpfile
 
 # templating; replacing placeholders
+outfile="${tmpfile}_1"
 sed $template \
 		-e "s/<!-- TITLE -->/$title/g" \
 		-e "s/<!-- TAGLINE -->/$tagline/g" | \
-	awk -v RS='<!-- CONTENTS -->' "NR > 0 { print \$0 > \"${tmpfile}_\" NR }"
+	while read -r line; do \
+		if [ "$line" == '<!-- CONTENTS -->' ]; then \
+			outfile="${tmpfile}_2"; \
+		else \
+			echo "$line" >> "$outfile"; \
+		fi; \
+	done
 cat ${tmpfile}_1 $tmpfile ${tmpfile}_2
 rm $tmpfile ${tmpfile}_{1,2}
