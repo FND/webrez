@@ -23,9 +23,10 @@ Markdown.pl | \
 
 # templating; replacing placeholders
 outfile="${tmpfile}_1"
-sed $template \
+sed \
 		-e "s/<!-- TITLE -->/$title/g" \
-		-e "s/<!-- TAGLINE -->/$tagline/g" | \
+		-e "s/<!-- TAGLINE -->/$tagline/g" \
+		"$template" | \
 	while read -r line; do \
 		if [ "$line" == '<!-- CONTENTS -->' ]; then \
 			outfile="${tmpfile}_2"; \
