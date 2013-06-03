@@ -1,3 +1,4 @@
 [submodule "shower"]
 	path = shower
-	url = git://github.com/shower/shower.git
+	url = git://github.com/FND/shower.git
+	branch = console-notes

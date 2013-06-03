@@ -13,6 +13,17 @@ Getting Started
 * run `./build`
 
 
+Extensibility
+-------------
+
+customizations can be included in the respective template file
+
+for example, this allows using
+[Prettify](http://google-code-prettify.googlecode.com/svn/trunk/README.html) for
+syntax highlighting simply by adding a `SCRIPT` tag and ensuring the respective
+code blocks have the required class
+
+
 Structure
 ---------
 
@@ -56,3 +67,16 @@ element:
     <h2 class="my-custom-class" style="color: red;">Attention!</h2>
 
 See the default `index.md` for examples.
+
+Optional speaker notes are displayed in the browser console:
+
+    ----
+    # Hello World
+
+    lorem ipsum
+    dolor sit amet
+
+    <hr class="pragma notes">
+
+    * this is just a sample slide
+    * it illustrates how speaker notes are used
