@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # generates Shower presentation from Markdown input on STDIN
 #
@@ -28,7 +28,7 @@ sed \
 		-e "s/<!-- TAGLINE -->/$tagline/g" \
 		"$template" | \
 	while read -r line; do \
-		if [ "$line" == '<!-- CONTENTS -->' ]; then \
+		if [ "$line" = '<!-- CONTENTS -->' ]; then \
 			outfile="${tmpfile}_2"; \
 		else \
 			echo "$line" >> "$outfile"; \
